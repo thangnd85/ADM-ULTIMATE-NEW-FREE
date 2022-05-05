@@ -78,43 +78,43 @@ fi
 }
 err_fun () {
      case $1 in
-     1)msg -verm "$(fun_trans "Usuario Nulo")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     2)msg -verm "$(fun_trans "Nombre muy corto (MIN: 2 CARACTERES)")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     3)msg -verm "$(fun_trans "Nombre muy grande (MAX: 5 CARACTERES)")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     4)msg -verm "$(fun_trans "Contraseña Nula")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     5)msg -verm "$(fun_trans "Contraseña muy corta")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     6)msg -verm "$(fun_trans "Contraseña muy grande")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     7)msg -verm "$(fun_trans "Duracion Nula")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     8)msg -verm "$(fun_trans "Duracion invalida utilize numeros")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     9)msg -verm "$(fun_trans "Duracion maxima y de un año")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     11)msg -verm "$(fun_trans "Limite Nulo")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     12)msg -verm "$(fun_trans "Limite invalido utilize numeros")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     13)msg -verm "$(fun_trans "Limite maximo de 999")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-     14)msg -verm "$(fun_trans "Usuario Ya Existe")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-	 15)msg -verm "$(fun_trans "(Solo numeros) GB = Min: 1gb Max: 1000gb")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-	 16)msg -verm "$(fun_trans "(Solo numeros)")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
-	 17)msg -verm "$(fun_trans "(Sin Informacion - Para Cancelar Digite CRTL + C)")"; sleep 4s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     1)msg -verm "$(fun_trans "No user")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     2)msg -verm "$(fun_trans "Name (MIN: 2 characters)")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     3)msg -verm "$(fun_trans "Name (MAX: 5 characters)")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     4)msg -verm "$(fun_trans "No password")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     5)msg -verm "$(fun_trans "very short password")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     6)msg -verm "$(fun_trans "Good,password")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     7)msg -verm "$(fun_trans "No Duracion")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     8)msg -verm "$(fun_trans "Invalid duration use numbers")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     9)msg -verm "$(fun_trans "Maximum duration and one year")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     11)msg -verm "$(fun_trans "No Limit")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     12)msg -verm "$(fun_trans "Invalid limit use numbers")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     13)msg -verm "$(fun_trans "maximum limit of 999")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+     14)msg -verm "$(fun_trans "User already exists")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+	 15)msg -verm "$(fun_trans "(Only numbers) GB = Min: 1gb Max: 1000gb")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+	 16)msg -verm "$(fun_trans "(Only numbers)")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+	 17)msg -verm "$(fun_trans "Cancel press CRTL + C)")"; sleep 4s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
      esac
 }
 intallv2ray () {
 apt install python3-pip -y 
 source <(curl -sL https://multi.netlify.app/v2ray.sh)
-msg -ama "$(fun_trans "Intalado con Exito")!"
+msg -ama "$(fun_trans " Successfully Installed")!"
 USRdatabase="/etc/VPS-MX/RegV2ray"
 [[ ! -e ${USRdatabase} ]] && touch ${USRdatabase}
 sort ${USRdatabase} | uniq > ${USRdatabase}tmp
 mv -f ${USRdatabase}tmp ${USRdatabase}
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 
 }
 protocolv2ray () {
-msg -ama "$(fun_trans "Escojer opcion 3 y poner el dominio de nuestra IP")!"
+msg -ama "$(fun_trans "Choose option 3 and put the domain of our IP")!"
 msg -bar
 v2ray stream
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 tls () {
