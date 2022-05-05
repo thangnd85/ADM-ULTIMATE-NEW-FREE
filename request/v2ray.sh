@@ -118,41 +118,41 @@ msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 tls () {
-msg -ama "$(fun_trans "Activar o Desactivar TLS")!"
+msg -ama "$(fun_trans "Enable or Disable TLS")!"
 msg -bar
 v2ray tls
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 portv () {
-msg -ama "$(fun_trans "Cambiar Puerto v2ray")!"
+msg -ama "$(fun_trans "Change Port v2ray")!"
 msg -bar
 v2ray port
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 stats () {
-msg -ama "$(fun_trans "Estadisticas de Consumo")!"
+msg -ama "$(fun_trans "Consumption Statistics")!"
 msg -bar
 v2ray stats
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continuer" && read enter
 inst_v2ray
 }
 unistallv2 () {
 source <(curl -sL https://multi.netlify.app/v2ray.sh) --remove > /dev/null 2>&1
 rm -rf /etc/VPS-MX/RegV2ray > /dev/null 2>&1
-echo -e "\033[1;92m                  V2RAY REMOVIDO OK "
+echo -e "\033[1;92m                  V2RAY REMOVED OK "
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 infocuenta () {
 v2ray info
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 addusr () {
@@ -160,7 +160,7 @@ clear
 clear
 msg -bar
 #msg -tit
-msg -ama "             AGREGAR USUARIO | UUID V2RAY"
+msg -ama "             ADD USER | UUID V2RAY"
 msg -bar
 ##DAIS
 valid=$(date '+%C%y-%m-%d' -d " +31 days")		  
@@ -175,7 +175,7 @@ sed -i '16i\           \"email": "'$MAILITO'@gmail.com"' /etc/v2ray/config.json
 sed -i '17i\           \},' /etc/v2ray/config.json
 echo ""
 while true; do
-echo -ne "\e[91m >> Digita un Nombre: \033[1;92m"
+echo -ne "\e[91m >> Type a Name: \033[1;92m"
      read -p ": " nick
      nick="$(echo $nick|sed -e 's/[^a-z0-9 -]//ig')"
      if [[ -z $nick ]]; then
@@ -187,9 +187,9 @@ echo -ne "\e[91m >> Digita un Nombre: \033[1;92m"
      fi
      break
 done
-echo -e "\e[91m >> Agregado UUID: \e[92m$UUID "
+echo -e "\e[91m >> Generated UUID: \e[92m$UUID "
 while true; do
-     echo -ne "\e[91m >> Duracion de UUID (Dias):\033[1;92m " && read diasuser
+     echo -ne "\e[91m >> Duration of UUID (days):\033[1;92m " && read diasuser
      if [[ -z "$diasuser" ]]; then
      err_fun 17 && continue
      elif [[ "$diasuser" != +([0-9]) ]]; then
@@ -227,18 +227,18 @@ clear
 clear
 invaliduuid () {
 msg -bar
-echo -e "\e[91m                    UUID INVALIDO \n$(msg -bar)"
-msg -ne "Enter Para Continuar" && read enter
+echo -e "\e[91m                    UUID INVALID \n$(msg -bar)"
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 msg -bar
 #msg -tit
-msg -ama "             ELIMINAR USUARIO | UUID V2RAY"
+msg -ama "             DELETE USER | UUID V2RAY"
 msg -bar
-echo -e "\e[97m               USUARIOS REGISTRADOS"
+echo -e "\e[97m               REGISTERED USERS"
 echo -e "\e[33m$(cat /etc/VPS-MX/RegV2ray|cut -d '|' -f2,1)" 
 msg -bar
-echo -ne "\e[91m >> Digita el UUID a elininar:\n \033[1;92m " && read uuidel
+echo -ne "\e[91m >> Type the UUID to be deleted:\n \033[1;92m " && read uuidel
 [[ $(sed -n '/'${uuidel}'/=' /etc/v2ray/config.json|head -1) ]] || invaliduuid
 lineP=$(sed -n '/'${uuidel}'/=' /etc/v2ray/config.json)
 linePre=$(sed -n '/'${uuidel}'/=' /etc/VPS-MX/RegV2ray)
@@ -252,7 +252,7 @@ sed -i "${resta}d" /etc/v2ray/config.json
 sed -i "${resta}d" /etc/v2ray/config.json
 v2ray restart > /dev/null 2>&1
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 
@@ -261,7 +261,7 @@ clear
 clear
 msg -bar
 #msg -tit
-msg -ama "         USUARIOS REGISTRADOS | UUID V2RAY"
+msg -ama "         REGISTERED USERS | UUID V2RAY"
 msg -bar
 # usersss=$(cat /etc/VPS-MX/RegV2ray|cut -d '|' -f1)
 # cat /etc/VPS-MX/RegV2ray|cut -d'|' -f3
@@ -277,7 +277,7 @@ inst_v2ray
 
 else
 i=1
-echo -e "\e[97m                 UUID                | USER | EXPIRACION \e[93m"
+echo -e "\e[97m                 UUID                | USER | EXPIRATION \e[93m"
 msg -bar
 while read hostreturn ; do
 DateExp="$(cat /etc/VPS-MX/RegV2ray|grep -w "$hostreturn"|cut -d'|' -f3)"
@@ -299,11 +299,11 @@ done <<< "$IDEUUID"
 
 [[ ! -z $contador_secuencial ]] && {
 linesss=$(cat /etc/VPS-MX/RegV2ray | wc -l)
-	      echo -e "$contador_secuencial \n Numero de Registrados: $linesss"
+	      echo -e "$contador_secuencial \n Number of Registered: $linesss"
 	}
 fi
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 lim_port () {
@@ -311,7 +311,7 @@ clear
 clear
 msg -bar
 #msg -tit
-msg -ama "          LIMITAR MB X PORT | UUID V2RAY"
+msg -ama "          LIMIT MB X PORT | UUID V2RAY"
 msg -bar
 ###VER
 estarts () {
@@ -321,8 +321,8 @@ local HOST2="/etc/VPS-MX/v2ray/lisportt.log"
 local RETURN="$(cat $HOST|cut -d'|' -f2)"
 local IDEUUID="$(cat $HOST|cut -d'|' -f1)"
 if [[ -z $RETURN ]]; then
-echo -e "----- NINGUN PUERTO REGISTRADO -----"
-msg -ne "Enter Para Continuar" && read enter
+echo -e "----- NO REGISTERED PORT -----"
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 else
 i=1
@@ -345,13 +345,13 @@ linesss=$(cat /etc/VPS-MX/v2ray/lisportt.log | wc -l)
 	}
 fi
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continuer" && read enter
 inst_v2ray 
 }
 ###LIM
 liport () {
 while true; do
-     echo -ne "\e[91m >> Digite Port a Limitar:\033[1;92m " && read portbg
+     echo -ne "\e[91m >> Type Port to Limit:\033[1;92m " && read portbg
      if [[ -z "$portbg" ]]; then
      err_fun 17 && continue
      elif [[ "$portbg" != +([0-9]) ]]; then
@@ -362,7 +362,7 @@ while true; do
      break
 done
 while true; do
-     echo -ne "\e[91m >> Digite Cantidad de GB:\033[1;92m " && read capgb
+     echo -ne "\e[91m >> Enter Quantity of GB:\033[1;92m " && read capgb
      if [[ -z "$capgb" ]]; then
      err_fun 17 && continue
      elif [[ "$capgb" != +([0-9]) ]]; then
@@ -383,7 +383,7 @@ echo -e " Port Seleccionado: $portbg | Cantidad de GB: $gbuser"
 echo ""
 echo " $portbg | $gbuser | $multiplicacion " >> /etc/VPS-MX/v2ray/lisportt.log 
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 }
 ###RES
@@ -444,7 +444,7 @@ iptables-save > /etc/iptables/rules.v4
 lineP=$(sed -n '/'${portbg}'/=' /etc/VPS-MX/v2ray/lisportt.log)
 sed -i "${linePre}d" /etc/VPS-MX/v2ray/lisportt.log
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray 
 }
 ## MENU
@@ -475,19 +475,19 @@ screen -S limv2ray -p 0 -X quit
 fi
 unset PID_GEN
 PID_GEN=$(ps x|grep -v grep|grep "limv2ray")
-[[ ! $PID_GEN ]] && PID_GEN="\e[91m [ DESACTIVADO ] " || PID_GEN="\e[92m [ ACTIVADO ] "
+[[ ! $PID_GEN ]] && PID_GEN="\e[91m [ DISABLED ] " || PID_GEN="\e[92m [ ACTIVATED ] "
 statgen="$(echo $PID_GEN)"
 clear 
 clear
 msg -bar
 #msg -tit
-msg -ama "          ELIMINAR EXPIRADOS | UUID V2RAY"
+msg -ama "          DELETE EXPIRED | UUID V2RAY"
 msg -bar
 echo ""
 echo -e "                    $statgen " 
 echo "" 						
 msg -bar
-msg -ne "Enter Para Continuar" && read enter
+msg -ne "Enter To Continue" && read enter
 inst_v2ray
 
 }
@@ -511,7 +511,7 @@ statgen="$(echo $PID_GEN)"
 #msg -bar3
 msg -bar
 #msg -tit
-msg -ama "$(fun_trans "        INSTALADOR DE V2RAY (PASO A PASO) ")"
+msg -ama "$(fun_trans "        V2RAY INSTALLER (STEP BY STEP) ")"
 msg -bar
 ## INSTALADOR
 echo -ne "\033[1;32m [1] > " && msg -azu "$(fun_trans "INSTALAR V2RAY") "
