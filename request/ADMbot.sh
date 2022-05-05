@@ -149,9 +149,9 @@ fi
 # USUARIO BLOCK
 blockfun () {
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "VOCE NAO PODE USAR O BOT")\n"
+          bot_retorno+="$(fun_trans "BẠN KHÔNG THỂ SỬ DỤNG BOT")\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "Comandos Bloqueados")\n"
+          bot_retorno+="$(fun_trans "Lệnh bị khóa")\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -162,10 +162,10 @@ local bot_retorno="$LINE\n"
 ativarid_fun () {
 if [[ ! -z $LIBERADOS ]] && [[ $(echo ${LIBERADOS}|grep -w "$3") ]]; then
 local bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "ACESSO JA ESTA LIBERADO")\n"
+          bot_retorno+="$(fun_trans "TRUY CẬP ĐÃ ĐƯỢC LIÊN QUAN ĐẾN")\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "Voce ja esta Liberado")\n"
-          bot_retorno+="$(fun_trans "Bom Uso")\n"
+          bot_retorno+="$(fun_trans "Bạn đã được cho phép")\n"
+          bot_retorno+="$(fun_trans "Sử dụng tốt")\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -174,10 +174,10 @@ return 0
 elif [[ $1 = ${USERLIB} ]] && [[ $2 = ${PASSLIB} ]]; then
 [[ -z $LIBERADOS ]] && LIBERADOS="${3}" || LIBERADOS="${LIBERADOS} ${3}"
 local bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "LIBERACAO EFETUADA COM SUCESSO")\n"
+          bot_retorno+="$(fun_trans "ĐÃ THỰC HIỆN THÀNH CÔNG")\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "Agora voce pode gerenciar o bot")\n"
-          bot_retorno+="$(fun_trans "Bom Uso")\n"
+          bot_retorno+="$(fun_trans "Bây giờ bạn có thể quản lý bot")\n"
+          bot_retorno+="$(fun_trans "Sử dụng tốt")\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -185,11 +185,11 @@ local bot_retorno+="$LINE\n"
 return 0
 else
 local bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "VOCE NAO PODE USAR ESTE BOT")\n"
+          bot_retorno+="$(fun_trans "KHÔNG THỂ SỬ DỤNG BOT NÀY")\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "Nao tem permissao de uso")\n"
-          bot_retorno+="$(fun_trans "Tentativa de acesso negada")\n"
-          bot_retorno+="$(fun_trans "Usuario e Senha Errados")\n"
+          bot_retorno+="$(fun_trans "Không được phép sử dụnh")\n"
+          bot_retorno+="$(fun_trans "Nỗ lực truy cập bị từ chối")\n"
+          bot_retorno+="$(fun_trans "Người dùng sai")\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -199,14 +199,14 @@ fi
 }
 loguin_fun () {
 local bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "USUARIOS LIBERADOS NO BOT")\n"
+          bot_retorno+="$(fun_trans "NGƯỜI DÙNG MIỄN PHÍ KHÔNG CÓ BOT")\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
 							--parse_mode markdown
 for lines in $(echo $LIBERADOS); do
 local bot_retorno+="$LINE\n"
-          bot_retorno2+="$(fun_trans "Usuario") ID: $lines\n"
+          bot_retorno2+="$(fun_trans "Người dùng") ID: $lines\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno2)" \
@@ -230,7 +230,7 @@ done <<< "$portas_var"
 echo -e $portas
 }
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "Portas e Servicos Ativos")\n"
+          bot_retorno+="$(fun_trans "Port and service work")\n"
           bot_retorno+="$LINE\n"
           bot_retorno+="IP: $(meu_ip)\n"
           while read line; do
@@ -247,10 +247,10 @@ local bot_retorno="$LINE\n"
 # AJUDA
 ajuda_fun () {
 local bot_retorno="$LINE\n"
-         bot_retorno+="$(fun_trans "Ola Amigo")\n"
-         bot_retorno+="$(fun_trans "Seja Bem Vindo ao BOT")\n"
+         bot_retorno+="$(fun_trans "Hi")\n"
+         bot_retorno+="$(fun_trans "Welcome to BOT")\n"
          bot_retorno+="$LINE\n"
-         bot_retorno+="$(fun_trans "Aqui Esta a lista de Comandos Disponiveis")\n"
+         bot_retorno+="$(fun_trans "Here is the list of Available Commands")\n"
          bot_retorno+="$LINE\n"
          bot_retorno+="$(fun_trans "COMANDOS")\n"
          bot_retorno+="/online ($(fun_trans "usuarios online"))\n"
