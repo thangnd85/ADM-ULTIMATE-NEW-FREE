@@ -100,7 +100,7 @@ byinst="true"
 }
 
 install_fim () {
-msg -ama "$(source trans -b pt:${id} "Instalacao Completa, Utilize os Comandos"|sed -e 's/[^a-z -]//ig')" && msg bar2
+msg -ama "$(source trans -b pt:${id} "Complete Installation, Use the Commands"|sed -e 's/[^a-z -]//ig')" && msg bar2
 echo -e " menu / adm"
 msg -bar2
 }
@@ -156,13 +156,9 @@ chmod +x ${ARQ}/$1
 
 install_hosts () {
 _arq_host="/etc/hosts"
-_host[0]="d1n212ccp6ldpw.cloudfront.net"
-_host[1]="dns.whatsapp.net"
-_host[2]="portalrecarga.vivo.com.br/recarga"
-_host[3]="navegue.vivo.com.br/controle/"
-_host[4]="navegue.vivo.com.br/pre/"
-_host[5]="www.whatsapp.net"
-_host[6]="/ADM-ULTIMATE?"
+_host[0]="dns.whatsapp.net"
+_host[1]="www.whatsapp.net"
+_host[2]="/ADM-ULTIMATE?"
 for host in ${_host[@]}; do
 	if [[ "$(grep -w "$host" $_arq_host | wc -l)" = "0" ]]; then
 		sed -i "3i\127.0.0.1 $host" $_arq_host
@@ -170,17 +166,17 @@ for host in ${_host[@]}; do
 done
 }
 
-# Instalação NEW-ULTIMATE
+# Instalaï¿½ï¿½o NEW-ULTIMATE
 fun_ip
 wget -O /usr/bin/trans http://git.io/trans &> /dev/null
 clear
 msg -bar2
-msg -ama "[ NEW - ULTIMATE - SCRIPT ]    \033[1;37m@AAAAAEXQOSyIpN2JZ0ehUQ"
+msg -ama "[ NEW - ULTIMATE - SCRIPT ]    \033[1;37m@thangnd85"
 [[ $1 = "" ]] && funcao_idioma || {
 [[ ${#1} -gt 2 ]] && funcao_idioma || id="$1"
  }
 error_fun () {
-msg -bar2 && msg -verm "$(source trans -b pt:${id} "Esta Chave Era de Outro Servidor Portanto Foi Excluida"|sed -e 's/[^a-z -]//ig') " && msg -bar2
+msg -bar2 && msg -verm "$(source trans -b pt:${id} "This key was from another server, so it has been deleted"|sed -e 's/[^a-z -]//ig') " && msg -bar2
 [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}
 exit 1
 }
@@ -201,12 +197,12 @@ wget -O $HOME/lista-arq ${REQUEST}/lista-arq > /dev/null 2>&1 && echo -e "\033[1
    }
 sleep 1s
 updatedb
-if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
+if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY DISABLED!") ]]; then
    msg -bar2
-   msg -ama "$(source trans -b pt:${id} "BEM VINDO, OBRIGADO POR UTILIZAR"|sed -e 's/[^a-z -]//ig'): \033[1;31m[NEW-ULTIMATE]"
+   msg -ama "$(source trans -b pt:${id} "WELCOME, THANKS FOR USING"|sed -e 's/[^a-z -]//ig'): \033[1;31m[NEW-ULTIMATE]"
    [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    pontos="."
-   stopping="$(source trans -b pt:${id} "Verificando Atualizacoes"|sed -e 's/[^a-z -]//ig')"
+   stopping="$(source trans -b pt:${id} "Checking for Updates"|sed -e 's/[^a-z -]//ig')"
    for arqx in $(cat $HOME/lista-arq); do
    msg -verm "${stopping}${pontos}"
    wget -O ${SCPinstal}/${arqx} ${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" || error_fun
@@ -222,9 +218,9 @@ if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") 
    echo "${SCPdir}/menu" > /usr/bin/menu && chmod +x /usr/bin/menu
    echo "${SCPdir}/menu" > /usr/bin/adm && chmod +x /usr/bin/adm
    echo "${SCPdir}/menu" > /bin/h && chmod +x /bin/h
-   wget -O $HOME/LICENCIA.txt https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADM-ULTIMATE-NEW-FREE/master/LICENCIA.txt &> /dev/null
-   wget -O $HOME/versao https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADM-ULTIMATE-NEW-FREE/master/versao &> /dev/null
-   wget -O /bin/versao_script https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADM-ULTIMATE-NEW-FREE/master/Install/versaoatt &> /dev/null
+   wget -O $HOME/LICENCIA.txt https://raw.githubusercontent.com/thangnd85/ADM-ULTIMATE-NEW-FREE/master/LICENCIA.txt &> /dev/null
+   wget -O $HOME/versao https://raw.githubusercontent.com/thangnd85/ADM-ULTIMATE-NEW-FREE/master/versao &> /dev/null
+   wget -O /bin/versao_script https://raw.githubusercontent.com/thangnd85/ADM-ULTIMATE-NEW-FREE/master/Install/versaoatt &> /dev/null
    inst_components
    install_hosts
    echo "$Key" > ${SCPdir}/key.txt
